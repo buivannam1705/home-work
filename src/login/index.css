@@ -1,0 +1,12 @@
+.container-login {
+
+    margin-left: 500px;
+    width: 600px;
+    height: 700px;
+    color: #C8C9DA;
+    background-color: beige;
+}
+
+.register {
+    text-align: center;
+}
