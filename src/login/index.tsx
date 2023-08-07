@@ -1,33 +1,42 @@
-import { Button, Checkbox, Form, Input, Spin } from "antd";
+import { Button,Form, Input } from "antd";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import './index.css'
 import { User } from "../interface";
-import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
 
 const Login = () => {
     const [user, setUser] = useState({
-        name: '',
         email: '',
         password: '',
     });
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Your sign-in logic here
-        // const users: User[] = JSON.parse(localStorage.getItem('user') || '[]');
-        // const user = JSON.parse(localStorage.getItem(name) || "[]")
-        // const foundUser = user.find((e: { email: string; password: string; }) => e.email === email && e.password === password);
+      
+        const users: User[] = JSON.parse(localStorage.getItem('nam@gmail.com') || '[]');
+        // const user = JSON.parse(localStorage.getItem('user') || "[]")
+        const foundUser = users.find((e: { email: string; password: string; }) => e.email === user.email && e.password === user.password);
+       
+        if (foundUser) {
+            alert("đăng nhập thành công")
+            localStorage.setItem('user', user.email );
+            window.location.href = "home"
+        } else {
+            alert("đăng nhập thất bại")
+        }
 
-        // if (foundUser) {
-        //     window.location.href = "home"
-        //     alert("đăng nhập thành công")
-        //     localStorage.setItem('user', JSON.stringify(foundUser));
-        //     Redirect or perform any other action for a successful sign-in
-        // } else {
-        //     alert("đăng nhập thất bại")
-        // }
+
+        const users1: User[] = JSON.parse(localStorage.getItem('kien@gmail.com') || '[]');
+        const foundUser1 = users1.find((e: { email: string; password: string; }) => e.email === user.email && e.password === user.password);
+
+        if (foundUser1) {
+            alert("đăng nhập thành công")
+            localStorage.setItem('user', user.email );
+            window.location.href = "home"
+        } else {
+            alert("đăng nhập thất bại")
+        }
     };
 
 

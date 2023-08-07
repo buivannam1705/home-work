@@ -1,26 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { Button } from 'antd';
+import React from "react";
 import './home.css'
-import { User } from "../interface";
-import { log } from "console";
 
 const Home = () => {
-
     const hanldeLogOut = () => {
-        // localStorage.removeItem('user')
+        localStorage.removeItem('user')
         window.location.href = 'login'
-
     }
+    
+        // const getUser1 =localStorage.getItem('name');
+        // const getUser1 = JSON.parse(localStorage.getItem('nam') || "[]")
+       
+        // console.log(getUser1);
+        const data = localStorage.key(5);
 
-    let getUser = (localStorage.getItem("kien"));
-    console.log("user", getUser)
+        
+    console.log(data);
+   
     return (
         <>
             <div className="container-header">
                 <h1> Chào Mừng Bạn Đã Đến Với Hội Các Con Báo </h1>
-                <h1> 123{getUser}</h1>
-
+                 Hello {data}
             </div>
+            <div>
+    </div>
             <div onClick={hanldeLogOut}>
                 LogOut
             </div>

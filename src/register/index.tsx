@@ -1,12 +1,10 @@
 import { Button, Form, Input } from "antd";
 import './index.css'
 import { useState } from "react";
-import { User } from '../interface';
 
 
 const Register = () => {
     const [user, setUser] = useState({
-        name: '',
         email: '',
         password: '',
     });
@@ -14,13 +12,13 @@ const Register = () => {
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        const users = JSON.parse(localStorage.getItem(user.name) || '[]');
+        const users = JSON.parse(localStorage.getItem(user.email) || '[]');
         const existingUser = users.find((e: { email: string; }) => e.email === user.email);
         if (existingUser) {
             alert("tài khoản đã tồn tại")
         } else {
             users.push(user);
-            localStorage.setItem(user.name, JSON.stringify(users));
+            localStorage.setItem(user.email, JSON.stringify(users));
             alert("đăng ký thành công")
             window.location.href = "login"
 
@@ -46,13 +44,6 @@ const Register = () => {
                         name="basic"
                         initialValues={{ remember: true }}
                         autoComplete="off">
-                        <p>Name</p>
-                        <Form.Item
-                            rules={[{ required: true, message: 'Email không được trống' }]}>
-                            <Input
-                                name="name" value={user.name} onChange={handleChange}
-                                style={{ width: 400, height: 48 }} placeholder='Email' className="color-blur inpt" />
-                        </Form.Item>
                         <p>Email</p>
                         <Form.Item
                             rules={[{ required: true, message: 'Email không được trống' }]}>

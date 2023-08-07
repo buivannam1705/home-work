@@ -1,4 +1,4 @@
-import { Button, Modal, Table } from "antd";
+import { Button, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { useState } from "react";
 import ModalComponent from "../modal";
