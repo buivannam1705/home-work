@@ -1,7 +1,7 @@
 const express = require('express')
 const mysql = require('mysql')
 const cors = require('cors')
-const port = 3000;
+const port = 3200;
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -15,11 +15,16 @@ const db = mysql.createConnection({
     host:'localhost',
     user:"root",
     password:'',
-    database:'signup'
+    database:'quanlysv'
 })
 app.post('/signup', (req, res) => {
-    const { email, password } = req.body;
-
+   const {email,password} = req.body
     res.status(200).json({ message: 'Signup successful' });
   });
 
+
+app.post('/signin',(req,res) => {
+    const { email, password } = req.body;
+
+    res.status(200).json({ message: 'Signin successful' });
+  })
