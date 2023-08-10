@@ -3,42 +3,25 @@ import { Button,Form, Input } from "antd";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import './index.css'
-import { User } from "../interface";
-
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+    const navigate = useNavigate();
     const [user, setUser] = useState({
         email: '',
         password: '',
     });
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-      
-        const users: User[] = JSON.parse(localStorage.getItem('nam@gmail.com') || '[]');
-        // const user = JSON.parse(localStorage.getItem('user') || "[]")
-        const foundUser = users.find((e: { email: string; password: string; }) => e.email === user.email && e.password === user.password);
-       
-        if (foundUser) {
-            alert("đăng nhập thành công")
-            localStorage.setItem('user', user.email );
-            window.location.href = "home"
-        } else {
-            alert("đăng nhập thất bại")
-        }
-
-
-        const users1: User[] = JSON.parse(localStorage.getItem('kien@gmail.com') || '[]');
-        const foundUser1 = users1.find((e: { email: string; password: string; }) => e.email === user.email && e.password === user.password);
-
-        if (foundUser1) {
-            alert("đăng nhập thành công")
-            localStorage.setItem('user', user.email );
-            window.location.href = "home"
-        } else {
-            alert("đăng nhập thất bại")
-        }
-    };
+    const handleSubmit = (e) => {
+        axios.post('http://localhost:3200/signin',user.email && user.password)
+        .then(res => {
+          navigate('/home')
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      }
 
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

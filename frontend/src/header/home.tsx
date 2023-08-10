@@ -11,16 +11,14 @@ const Home = () => {
         // const getUser1 = JSON.parse(localStorage.getItem('nam') || "[]")
        
         // console.log(getUser1);
-        const data = localStorage.key(5);
 
         
-    console.log(data);
    
     return (
         <>
             <div className="container-header">
                 <h1> Chào Mừng Bạn Đã Đến Với Hội Các Con Báo </h1>
-                 Hello {data}
+                 Hello 
             </div>
             <div>
     </div>
